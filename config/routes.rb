@@ -1,4 +1,12 @@
 Kwejkodemot::Application.routes.draw do
+  
+  get "queue/index"
+
+  resources :demots
+  resources :queue, only: [ :index]
+
+  devise_for :users
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -48,7 +56,7 @@ Kwejkodemot::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'demots#index'
 
   # See how all your routes lay out with "rake routes"
 

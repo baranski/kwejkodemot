@@ -1,0 +1,11 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @demot.title
+%p
+  = image_tag @demot.image.url(:medium)
+
+= link_to 'Edit', edit_demot_path(@demot)
+\|
+= link_to 'Back', demots_path

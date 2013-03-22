@@ -1,0 +1,17 @@
+!!!
+%html
+  %head
+    %title Kwejkodemot
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    - if user_signed_in?
+      = link_to 'Wyloguj sie', destroy_user_session_path, method: :delete
+    - else
+      = link_to 'Zaloguj sie', new_user_session_path
+      = link_to 'Zarejestruj sie', new_user_registration_path
+      %ul
+        %li= link_to 'Glowna', root_path
+        %li= link_to 'Poczekalnia', queue_index_path
+    = yield
