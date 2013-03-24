@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_filter :load_categories
 
   rescue_from CanCan::AccessDenied do |exception|
-    flush[:error] = "Access Denied"
+    flash[:error] = "Access Denied"
   end
   def load_categories
     @categories=Category.all
