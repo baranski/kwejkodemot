@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @category.name
+%ul
+  - @category.demots.each do |demots|
+    %li= link_to image_tag(demot.image.url), demot
+- if can? :edit, @category
+  = link_to 'Edytuj', edit_category_path(@category)
+\|
+= link_to 'Back', categories_path

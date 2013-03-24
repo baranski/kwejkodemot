@@ -1,7 +1,12 @@
-%ul
+%h1 Najlepsze demoty
+
+%ul.unstyled
   - @demots.each do |demot|
     %li
       = link_to image_tag(demot.image.url(:thumb)), demot
       = link_to 'Edit', edit_demot_path(demot)
       = link_to 'Destroy', demot, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      Visits 
+      = demot.visits
 = link_to 'New Demot', new_demot_path
+= paginate @demots

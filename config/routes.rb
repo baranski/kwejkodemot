@@ -1,9 +1,18 @@
 Kwejkodemot::Application.routes.draw do
   
+  get "votes/show"
+
+  resources :categories
+
+
+  get "top/index"
+
   get "queue/index"
 
   resources :demots
   resources :queue, only: [ :index]
+  resources :top, only: [ :index]
+  resources :votes, only: [ :show]
 
   devise_for :users
 

@@ -5,7 +5,17 @@
   = @demot.title
 %p
   = image_tag @demot.image.url(:medium)
-
-= link_to 'Edit', edit_demot_path(@demot)
+  - unless @demot.voters.include?(current_user)
+    %div
+      %a{href: vote_path(@demot)}
+        %i.icon-plus-sign
+%p
+  = "views: #{@demot.visits}"
+  = "votes: #{@demot.votes_count}"
+%p 
+  - if can? :edit, @category
+    = link_to 'Edit', edit_demot_path(@demot)
 \|
-= link_to 'Back', demots_path
+= link_to 'Wroc', demots_path
+%script{ :src => "https://connect.facebook.net/pl_PL/all.js#xfbml=1" }
+%fb:comments{ :href => "#{ActiveSupport::Inflector.transliterate(CGI::unescape(request.url)).gsub('http://www.', 'http://').gsub(/\?.+\z/, '')}", :width =>'600' }

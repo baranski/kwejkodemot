@@ -15,5 +15,9 @@
   .field
     = f.label :active
     = f.check_box :active
+    - for category in @categories
+      = check_box_tag "demots[category_ids][]", "#{category.id}", @demot.categories.include?(category)
+      = category.name
+
   .actions
     = f.submit 'Zapisz'

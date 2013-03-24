@@ -9,4 +9,12 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :admin
   # attr_accessible :title, :body
   has_many :demots
+  has_many :votes
+  has_many :demots, :through => :votes
+  
+  class User < ActiveRecord::Base
+    extend FriendlyId
+    friendly_id :name, use: :slugged
+  end
+
 end

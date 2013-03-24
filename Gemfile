@@ -22,6 +22,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'pg'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -40,6 +41,8 @@ gem 'jquery-rails'
 
 gem 'rmagick'
 gem "paperclip", "~> 3.0"
+gem 'kaminari'
+gem 'paperclip-dropbox'
 
 gem "thin", ">= 1.5.0"
 gem "haml-rails", ">= 0.4"
@@ -58,6 +61,7 @@ gem "rolify", ">= 3.2.0"
 gem "simple_form", ">= 2.0.4"
 gem "quiet_assets", ">= 1.0.1", :group => :development
 gem "figaro", ">= 0.5.3"
+gem "friendly_id"
 gem "better_errors", ">= 0.6.0", :group => :development
 gem "binding_of_caller", ">= 0.7.1", :group => :development, :platforms => [:mri_19, :rbx]
 gem "libv8", ">= 3.11.8"

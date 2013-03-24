@@ -2,42 +2,26 @@ class DemotsController < ApplicationController
 
 before_filter :authenticate_user!, :except => [ :show, :index ]
 
+load_and_authorize_resource
+
   # GET /demots
   # GET /demots.json
   def index
-    @demots = Demot.where(active: true)
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @demots }
-    end
+    @demots = Demot.where(active: true).page params[:page]
   end
 
   # GET /demots/1
   # GET /demots/1.json
   def show
-    @demot = Demot.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @demot }
-    end
   end
 
   # GET /demots/new
   # GET /demots/new.json
   def new
-    @demot = Demot.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @demot }
-    end
   end
 
   # GET /demots/1/edit
   def edit
-    @demot = Demot.find(params[:id])
   end
 
   # POST /demots

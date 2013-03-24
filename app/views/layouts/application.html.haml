@@ -35,6 +35,7 @@
                 %li= link_to 'Zarejestruj sie', new_user_registration_path
               %li= link_to 'Glowna', root_path
               %li= link_to 'Poczekalnia', queue_index_path
+              %li= link_to 'Top', top_index_path
 
     .container
 
@@ -44,7 +45,7 @@
           = yield
         .span3
           .well.sidebar-nav
-            %h3 Sidebar
+            %h3= "Witaj #{current_user.email}" if user_signed_in?
             %ul.nav.nav-list
               %li.nav-header Sidebar
               - if user_signed_in?
@@ -54,6 +55,9 @@
                 %li= link_to 'Zarejestruj sie', new_user_registration_path
               %li= link_to 'Glowna', root_path
               %li= link_to 'Poczekalnia', queue_index_path
+              %ul
+                - @categories.each do |category|
+                  %li= link_to category.name, category
     
       %footer
         %p &copy; Company 2013
