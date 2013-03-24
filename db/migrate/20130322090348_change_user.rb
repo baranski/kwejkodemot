@@ -1,7 +1,7 @@
 class ChangeUser < ActiveRecord::Migration
   def up
     remove_column :users, :admin
-    add_column :users, :admin, :boolean, default: 0, null: false
+    add_column :users, :admin, :boolean, default: false, null: false
   end
 
   def down
